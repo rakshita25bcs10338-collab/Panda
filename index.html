@@ -76,6 +76,16 @@
     .note h2 { margin: 0 0 10px; font-size: 20px; }
     .note ol { margin: 0; padding-left: 22px; color: var(--ink-soft); font-weight: 600; line-height: 1.8; }
     .note b { color: var(--ink); }
+    .note code {
+      display: inline-block;
+      margin-top: 4px;
+      background: #fff;
+      color: var(--ink);
+      padding: 3px 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      word-break: break-all;
+    }
 
     footer { text-align: center; padding: 0 0 48px; font-size: 14px; font-weight: 600; color: var(--ink-soft); line-height: 1.7; }
     footer a { color: var(--ink); }
@@ -167,7 +177,8 @@
       <h2>Opening it the first time</h2>
       <ol>
         <li>Unzip <b>Panda.zip</b> and drag <b>Panda</b> into your <b>Applications</b> folder.</li>
-        <li><b>Right-click</b> Panda and choose <b>Open</b>, then click <b>Open</b> again. macOS asks because the app isn't from the App Store.</li>
+        <li>macOS blocks apps that aren't from the App Store. Open the <b>Terminal</b> app (Cmd+Space, type Terminal), paste this, and press Enter:<br /><code>xattr -cr /Applications/Panda.app</code></li>
+        <li>Open <b>Panda</b> from Applications. If it's still blocked, go to <b>System Settings → Privacy &amp; Security</b>, scroll down, and click <b>Open Anyway</b>.</li>
         <li>Click the panda to add your tasks. To quit, click ⚙ then <b>Quit Panda</b>.</li>
       </ol>
     </section>
