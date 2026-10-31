@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panda — a tiny desktop panda for your daily tasks</title>
+  <meta name="description" content="A cute floating panda that lives on your Mac screen, keeps your daily tasks, and naps when you're done." />
+  <style>
+    :root {
+      --cream: #fbf5e9;
+      --cream-2: #f4ead6;
+      --beige: #e6d5b8;
+      --tan: #c9a977;
+      --amber: #e0a24a;
+      --ink: #3d3326;
+      --ink-soft: #8a7a63;
+      --green: #c5d99a;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: radial-gradient(1200px 600px at 50% -10%, #fffaf0 0%, var(--cream) 55%, var(--cream-2) 100%);
+      color: var(--ink);
+      font-family: ui-rounded, "SF Pro Rounded", "Nunito", "Segoe UI", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+    .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+    header { padding: 28px 0 0; font-weight: 800; font-size: 20px; letter-spacing: -0.01em; }
+
+    /* hero */
+    .hero { text-align: center; padding: 40px 0 56px; }
+    .scene { width: 240px; height: 240px; margin: 0 auto 8px; filter: drop-shadow(0 14px 14px rgba(90, 65, 30, 0.22)); }
+    .scene svg { width: 100%; height: 100%; overflow: visible; }
+    h1 { font-size: clamp(34px, 7vw, 56px); line-height: 1.05; letter-spacing: -0.03em; margin: 16px 0 14px; }
+    .sub { max-width: 520px; margin: 0 auto 30px; font-size: 18px; line-height: 1.5; color: var(--ink-soft); font-weight: 600; }
+
+    .btn {
+      display: inline-block;
+      padding: 16px 30px;
+      border-radius: 18px;
+      background: var(--ink);
+      color: var(--cream);
+      font-weight: 800;
+      font-size: 17px;
+      text-decoration: none;
+      box-shadow: 0 10px 24px -8px rgba(61, 51, 38, 0.55);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 14px 28px -8px rgba(61, 51, 38, 0.55); }
+    .btn:active { transform: scale(0.97); }
+    .meta { margin-top: 14px; font-size: 13px; font-weight: 600; color: var(--ink-soft); }
+
+    /* features */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; padding-bottom: 56px; }
+    .card {
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 12px 30px -14px rgba(90, 65, 30, 0.3);
+    }
+    .card .emoji { font-size: 30px; }
+    .card h3 { margin: 12px 0 6px; font-size: 18px; }
+    .card p { margin: 0; color: var(--ink-soft); font-weight: 600; line-height: 1.5; font-size: 15px; }
+
+    /* install note */
+    .note {
+      background: var(--cream-2);
+      border-radius: 24px;
+      padding: 26px 28px;
+      margin-bottom: 56px;
+    }
+    .note h2 { margin: 0 0 10px; font-size: 20px; }
+    .note ol { margin: 0; padding-left: 22px; color: var(--ink-soft); font-weight: 600; line-height: 1.8; }
+    .note b { color: var(--ink); }
+
+    footer { text-align: center; padding: 0 0 48px; font-size: 14px; font-weight: 600; color: var(--ink-soft); line-height: 1.7; }
+    footer a { color: var(--ink); }
+
+    /* zzz */
+    .zz { transform-box: fill-box; transform-origin: center; opacity: 0; animation: zrise 3.2s ease-in-out infinite; }
+    @keyframes zrise {
+      0% { opacity: 0; transform: translate(-8px, 10px) scale(0.7); }
+      25% { opacity: 1; }
+      100% { opacity: 0; transform: translate(10px, -18px) scale(1.15); }
+    }
+    .breathe { transform-box: fill-box; transform-origin: 50% 100%; animation: breathe 3.6s ease-in-out infinite; }
+    @keyframes breathe { 0%, 100% { transform: scale(1, 1); } 50% { transform: scale(1.02, 0.97); } }
+    @media (prefers-reduced-motion: reduce) { .zz, .breathe { animation: none; opacity: 1; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>🐼 Panda</header>
+
+    <section class="hero">
+      <div class="scene" aria-hidden="true">
+        <svg viewBox="0 0 200 200">
+          <g>
+            <rect x="14" y="140" width="172" height="24" rx="12" fill="#74b05e" />
+            <rect x="14" y="140" width="172" height="8" rx="4" fill="#8cc474" opacity="0.8" />
+            <rect x="52" y="140" width="6" height="24" fill="#558f45" />
+            <rect x="108" y="140" width="6" height="24" fill="#558f45" />
+            <rect x="156" y="140" width="6" height="24" fill="#558f45" />
+            <path d="M24 156 q-14 8 -12 24 q16 -2 22 -18 z" fill="#5ea04e" />
+            <path d="M176 156 q14 8 12 24 q-16 -2 -22 -18 z" fill="#5ea04e" />
+            <path d="M168 150 q10 -14 6 -26 q-14 8 -12 24 z" fill="#74b05e" />
+          </g>
+          <g class="breathe">
+            <ellipse cx="152" cy="136" rx="17" ry="14" fill="#2b2b2e" />
+            <ellipse cx="108" cy="126" rx="52" ry="30" fill="#fffdf8" />
+            <ellipse cx="88" cy="128" rx="13" ry="27" fill="#2b2b2e" />
+            <ellipse cx="74" cy="158" rx="9" ry="18" fill="#2b2b2e" transform="rotate(8 74 158)" />
+            <circle cx="62" cy="104" r="38" fill="#fffdf8" />
+            <circle cx="34" cy="76" r="14" fill="#2b2b2e" />
+            <circle cx="88" cy="72" r="14" fill="#2b2b2e" />
+            <circle cx="34" cy="76" r="6" fill="#4a4a4f" />
+            <circle cx="88" cy="72" r="6" fill="#4a4a4f" />
+            <ellipse cx="47" cy="106" rx="10" ry="13" fill="#2b2b2e" transform="rotate(18 47 106)" />
+            <ellipse cx="77" cy="104" rx="10" ry="13" fill="#2b2b2e" transform="rotate(-18 77 104)" />
+            <g fill="none" stroke="#fffdf8" stroke-width="3" stroke-linecap="round">
+              <path d="M41 108 q6 5 12 0" />
+              <path d="M71 107 q6 5 12 0" />
+            </g>
+            <circle cx="33" cy="120" r="6.5" fill="#ffb8b8" opacity="0.6" />
+            <circle cx="91" cy="118" r="6.5" fill="#ffb8b8" opacity="0.6" />
+            <ellipse cx="62" cy="119" rx="5" ry="3.6" fill="#2b2b2e" />
+            <path d="M56 125 q6 5 12 0" fill="none" stroke="#2b2b2e" stroke-width="2.2" stroke-linecap="round" />
+          </g>
+          <g fill="#fffdf8" stroke="#4e6a3b" stroke-width="3" stroke-linejoin="round" paint-order="stroke" font-weight="800" font-family="ui-rounded, system-ui, sans-serif">
+            <text x="128" y="64" font-size="24" class="zz" style="animation-delay:0s">z</text>
+            <text x="146" y="48" font-size="19" class="zz" style="animation-delay:1s">z</text>
+            <text x="160" y="34" font-size="14" class="zz" style="animation-delay:2s">z</text>
+          </g>
+        </svg>
+      </div>
+
+      <h1>Finish your tasks.<br />Let the panda nap.</h1>
+      <p class="sub">A tiny panda that lives on your screen with your daily to-do list. Skip your tasks and it wakes up to nudge you.</p>
+
+      <a class="btn" href="https://github.com/rakshita25bcs10338-collab/Panda/releases/latest/download/Panda.zip">Download for Mac</a>
+      <div class="meta">Free · Apple Silicon (M1 and newer) · 94 MB</div>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <div class="emoji">🎋</div>
+        <h3>Lives on your desktop</h3>
+        <p>Drag the panda anywhere. It stays on top, never blocks your clicks, and remembers its spot.</p>
+      </div>
+      <div class="card">
+        <div class="emoji">✅</div>
+        <h3>Your tasks, your count</h3>
+        <p>Choose 1 to 8 task slots. Click the panda to open a cozy cream panel right next to it.</p>
+      </div>
+      <div class="card">
+        <div class="emoji">🎉</div>
+        <h3>Moods that match</h3>
+        <p>Asleep when you're on track, awake and chasing your cursor when tasks slip, party hat when you finish.</p>
+      </div>
+    </section>
+
+    <section class="note">
+      <h2>Opening it the first time</h2>
+      <ol>
+        <li>Unzip <b>Panda.zip</b> and drag <b>Panda</b> into your <b>Applications</b> folder.</li>
+        <li><b>Right-click</b> Panda and choose <b>Open</b>, then click <b>Open</b> again. macOS asks because the app isn't from the App Store.</li>
+        <li>Click the panda to add your tasks. To quit, click ⚙ then <b>Quit Panda</b>.</li>
+      </ol>
+    </section>
+
+    <footer>
+      Made by Rakshita · <a href="https://github.com/rakshita25bcs10338-collab/Panda">GitHub</a><br />
+      Inspired by the open-source <a href="https://github.com/audreypork/no-cap">no-cap</a> project.
+    </footer>
+  </div>
+</body>
+</html>
